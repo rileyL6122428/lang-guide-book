@@ -1,0 +1,31 @@
+{
+  "name": "language-guide-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rileyL6122428/lang-guide-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rileyL6122428/lang-guide-book/issues"
+  },
+  "homepage": "https://github.com/rileyL6122428/lang-guide-book#readme",
+  "dependencies": {
+    "@angular/common": "^4.2.5",
+    "@angular/compiler": "^4.2.5",
+    "@angular/core": "^4.2.5",
+    "@angular/platform-browser": "^4.2.5",
+    "@angular/platform-browser-dynamic": "^4.2.5",
+    "es6-shim": "^0.35.3",
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.0.0-beta.6",
+    "zone.js": "^0.8.12"
+  }
+}

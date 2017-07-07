@@ -4,4 +4,6 @@ target
 .settings
 .project
 
-.scrach-notes.md
+scrach-notes.md
+
+node_modules
