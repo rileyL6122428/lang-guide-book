@@ -35,8 +35,8 @@
     "@types/jasmine": "^2.5.53"
   },
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --single-run",
-    "postinstall": "webpack && npm test"
+    "test": "./node_modules/karma/bin/karma start",
+    "postinstall": "webpack"
   },
   "repository": {
     "type": "git",
