@@ -36,7 +36,7 @@
   },
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run",
-    "postinstall": "webpack"
+    "postinstall": "webpack && npm test"
   },
   "repository": {
     "type": "git",
