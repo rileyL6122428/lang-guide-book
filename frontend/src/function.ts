@@ -1,4 +1,4 @@
-function returnNum():number {
+export function returnNum():number {
   return 499;
 }
 
