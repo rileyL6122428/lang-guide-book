@@ -7,5 +7,5 @@ target
 scrach-notes.md
 
 node_modules
-
+coverage
 src/main/webapp/bundle.js
