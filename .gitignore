@@ -7,3 +7,5 @@ target
 scrach-notes.md
 
 node_modules
+
+src/main/webapp/bundle.js
