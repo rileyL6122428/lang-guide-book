@@ -9,7 +9,7 @@
         "experimentalDecorators": true
     },
     "files": [
-        "./frontend/src/test-angular-app.ts",
+        "./frontend/src/language-guide-book-app.ts",
         "./typings/index.d.ts"
     ]
 }
