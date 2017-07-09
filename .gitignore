@@ -9,3 +9,4 @@ scrach-notes.md
 node_modules
 coverage
 src/main/webapp/bundle.js
+src/main/webapp/bundle.css
