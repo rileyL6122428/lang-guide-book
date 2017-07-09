@@ -1,0 +1,46 @@
+section#home-page {
+  h1 {
+
+    #header-image {
+      text-align: center;
+    }
+    
+    p {
+      text-align: center;
+      font-size: 48px;
+    }
+  }
+
+
+  p, li {
+    font-size: 16px;
+  }
+
+  p#welcome-paragraph, section#what-you-can-do, section#getting-started {
+    margin-left: calc(50% - 315px);
+  }
+
+  p#welcome-paragraph {
+    margin-top: 25px;
+  }
+
+  section#what-you-can-do, section#getting-started {
+    margin-top: 20px;
+  }
+
+  section#what-you-can-do {
+    li:first-child {
+      margin-top: 8px;
+    }
+    li {
+      padding-left: 15%;
+      margin-top: 5px;
+    }
+  }
+
+  section#getting-started {
+    p {
+      margin-top: 5px;
+    }
+  }
+}
