@@ -1,10 +1,15 @@
 section#home-page {
-  h1 {
 
+  height: 100%;
+  width: 100%;
+  background-color: #00c4ff;
+  color: white;
+
+  h1 {
     #header-image {
       text-align: center;
     }
-    
+
     p {
       text-align: center;
       font-size: 48px;
