@@ -1,4 +1,4 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { LanguageGuideBookApp } from './language-guide-book-app';
+import { LGBAppModule } from './lgb-app-module';
 
-platformBrowserDynamic().bootstrapModule(LanguageGuideBookApp);
+platformBrowserDynamic().bootstrapModule(LGBAppModule);
