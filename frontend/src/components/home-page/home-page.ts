@@ -22,7 +22,7 @@ import { Component } from '@angular/core';
 
     <section id="getting-started">
       <p>New users can click here to get started.</p>
-      <p>Returning users can click here to login.</p>
+      <p>Returning users can click <a routerLink="/login">here</a> to login.</p>
     </section>
 
   </section>

@@ -8,6 +8,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router'
 import { routes } from './routes'
 
+import { LoginComponent } from './components/login-page/login-page'
 import { HomePageComponent } from './components/home-page/home-page'
 import { LGBAppComponent } from './lgb-app-component'
 
@@ -17,7 +18,11 @@ import { LGBAppComponent } from './lgb-app-component'
     BrowserModule,
     FormsModule,
   ],
-  declarations: [ HomePageComponent, LGBAppComponent ],
+  declarations: [
+    HomePageComponent,
+    LGBAppComponent,
+    LoginComponent
+  ],
   bootstrap:    [ LGBAppComponent ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
