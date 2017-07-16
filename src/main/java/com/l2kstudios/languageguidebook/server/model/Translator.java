@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User {
+public class Translator {
 	
 	@Id
 	private String name;
 	private String encryptedPassword;
+	private String sessionToken;
 	
 	
 	public String getName() {
@@ -25,6 +26,12 @@ public class User {
 	}
 	public void setEncryptedPassword(String encryptedPassword) {
 		this.encryptedPassword = encryptedPassword;
+	}
+	public String getSessionToken() {
+		return sessionToken;
+	}
+	public void setSessionToken(String sessionToken) {
+		this.sessionToken = sessionToken;
 	}
 	
 }

@@ -9,6 +9,7 @@
 - start basic login page
   [] create frontend form
   [] add backend 
+  	- create basic session login and logout
   
 - start profile page
 

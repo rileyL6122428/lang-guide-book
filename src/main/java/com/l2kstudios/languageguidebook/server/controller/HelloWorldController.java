@@ -13,7 +13,7 @@ public class HelloWorldController {
 	public Object index() {
 		
 		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-		String encodedHelloWorld1 = bCryptPasswordEncoder.encode("Hello World");
+		String encodedHelloWorld1 = bCryptPasswordEncoder.encode("password");
 		String encodedHelloWorld2 = bCryptPasswordEncoder.encode("Hello World");
 		
 		bCryptPasswordEncoder.matches("Hello World", encodedHelloWorld1);
@@ -23,5 +23,7 @@ public class HelloWorldController {
 		
 		return new HelloWorld();
 	}
+	
+	
 	
 }
