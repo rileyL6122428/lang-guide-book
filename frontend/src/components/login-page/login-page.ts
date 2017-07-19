@@ -4,11 +4,11 @@ import { UnAuthenticatedUser } from '../../domain/unauthenticated-user'
 @Component({
   template: `
   <section id="login-page">
-    <form>
+    <form id="login">
       <h1>Login</h1>
-      <input type="text" [(ngModel)]="user.name" name="username" placeholder="username"/>
-      <input type="password" [(ngModel)]="user.password" name="password" placeholder="password" />
-      <button (click)="login()">Login</button>
+      <input id="username" type="text" [(ngModel)]="user.name" name="username" placeholder="username"/>
+      <input id="password" type="password" [(ngModel)]="user.password" name="password" placeholder="password" />
+      <button id="login" (click)="login()">Submit</button>
     </form>
   </section>
   `,

@@ -1,0 +1,4 @@
+- Get basic styling for login page
+- Get auth module up and running with services and storage
+- Make basic landing page for login (dashboard)
+- unit tests for all things made thus far (JUNIT 5?)

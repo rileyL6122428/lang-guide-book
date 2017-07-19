@@ -3,9 +3,12 @@ html, body {
   margin: 0;
 }
 
-div, span, h1, h2, h3, h4, h5, h6, p, li, ul, section, input, label, form {
+div, span, h1, h2, h3, h4, h5, h6, p, li, ul, section, input, label, form, button {
   display: block;
+}
 
+div, span, h1, h2, h3, h4, h5, h6, p, li, ul, section, input, label, form {
+  
   margin: 0;
   padding: 0;
   border: 0;
