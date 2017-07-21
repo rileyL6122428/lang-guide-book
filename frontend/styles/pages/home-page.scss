@@ -1,9 +1,9 @@
+@import '../domain/background.scss';
+
+
 section#home-page {
 
-  height: 100%;
-  width: 100%;
-  background-color: #00c4ff;
-  color: white;
+  @include lgb-background;
 
   h1 {
     #header-image {

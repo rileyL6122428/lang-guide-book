@@ -1,4 +1,6 @@
-- Get basic styling for login page
+- [x] Get basic styling for login page
+- refactor styles thus far
+- start auth service
 - Get auth module up and running with services and storage
 - Make basic landing page for login (dashboard)
 - unit tests for all things made thus far (JUNIT 5?)

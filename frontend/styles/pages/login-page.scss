@@ -1,74 +1,15 @@
 @import '../constants/colors.scss';
 @import '../inj-styles/input-placeholder.scss';
+@import '../domain/background.scss';
+@import '../domain/credentials-modal.scss';
 
 section#login-page {
 
-  height: 100%;
-  width: 100%;
-  background-color: $pascal-light-blue;
-  color: white;
+  @include lgb-background;
 
   padding-top: 45px;
 
-  form#login {
 
-    width: 450px;
-    margin: auto;
-    border: 2px solid $pascal-white;
-    border-radius: 5px;
-    padding: 50px 0;
-
-    h1 {
-        text-align: center;
-        font-size: 34px;
-    }
-
-
-    input#username, input#password, button#login {
-      margin: auto;
-    }
-
-    input#username, input#password {
-      background-color: $transparent;
-      color: white;
-      border-bottom: 1px solid $pascal-white;
-
-      font-size: 18px;
-
-      @include apply-to-placeholder {
-        color: $pascal-white-thin;
-      };
-    }
-
-
-    input#username {
-      margin-top: 25px;
-    }
-
-    input#password {
-      margin-top: 15px;
-    }
-
-    button#login {
-      margin-top: 25px;
-
-      color: $pascal-white;
-      background-color: $transparent;
-      border: 1px solid white;
-      border-radius: 5px;
-      padding: 6px;
-
-      font-size: 18px;
-
-      transition: background-color 1s, color 1s;
-
-      &:hover {
-        cursor: pointer;
-
-        background-color: $pascal-white-thin;
-        color: $pascal-light-blue;
-      }
-    }
-  }
+  @include credentials-modal("login");
 
 }

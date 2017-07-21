@@ -1,0 +1,8 @@
+@import '../constants/colors.scss';
+
+@mixin lgb-background {
+  height: 100%;
+  width: 100%;
+  background-color: $pascal-light-blue;
+  color: white;
+}
