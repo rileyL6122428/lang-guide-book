@@ -6,11 +6,14 @@ import { FormsModule } from '@angular/forms';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router'
-import { routes } from './routes'
+import { routes } from './routes';
+import { Http } from '@angular/http';
 
 import { LoginComponent } from './components/login-page/login-page'
 import { HomePageComponent } from './components/home-page/home-page'
 import { LGBAppComponent } from './lgb-app-component'
+
+import { LoginService } from './services/login.service'
 
 @NgModule({
   imports: [
@@ -24,6 +27,10 @@ import { LGBAppComponent } from './lgb-app-component'
     LoginComponent
   ],
   bootstrap:    [ LGBAppComponent ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy}]
+  providers: [
+    Http,
+    LoginService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy}
+  ]
 })
 export class LGBAppModule { }

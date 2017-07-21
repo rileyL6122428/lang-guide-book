@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { UnAuthenticatedUser } from '../../domain/unauthenticated-user'
+import { UnAuthenticatedUser } from '../../domain/unauthenticated-user';
+import { LoginService } from '../../services/login.service';
+import { Inject } from '@angular/core'
 
 @Component({
   template: `
@@ -15,11 +17,12 @@ import { UnAuthenticatedUser } from '../../domain/unauthenticated-user'
 })
 export class LoginComponent {
 
-  user:UnAuthenticatedUser = new UnAuthenticatedUser();
+  private user:UnAuthenticatedUser = new UnAuthenticatedUser();
+
+  constructor(@Inject(LoginService) private loginService:LoginService) { }
 
   login() {
-    console.log("username = " + this.user.name);
-    console.log("password = " + this.user.password);
+    this.loginService.getSession();
   }
 
 }
