@@ -22,7 +22,8 @@ export class LoginComponent {
   constructor(@Inject(LoginService) private loginService:LoginService) { }
 
   login() {
-    this.loginService.getSession();
+    debugger
+    this.loginService.getSession(this.user);
   }
 
 }

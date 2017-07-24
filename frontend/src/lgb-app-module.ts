@@ -7,7 +7,10 @@ import { FormsModule } from '@angular/forms';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router'
 import { routes } from './routes';
+
 import { Http } from '@angular/http';
+
+import { HttpModule } from '@angular/http'
 
 import { LoginComponent } from './components/login-page/login-page'
 import { HomePageComponent } from './components/home-page/home-page'
@@ -20,6 +23,7 @@ import { LoginService } from './services/login.service'
     RouterModule.forRoot(routes, { useHash: true }),
     BrowserModule,
     FormsModule,
+    HttpModule
   ],
   declarations: [
     HomePageComponent,
@@ -28,7 +32,6 @@ import { LoginService } from './services/login.service'
   ],
   bootstrap:    [ LGBAppComponent ],
   providers: [
-    Http,
     LoginService,
     { provide: LocationStrategy, useClass: HashLocationStrategy}
   ]

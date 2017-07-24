@@ -116,6 +116,7 @@ public class SessionController {
 	
 	private Translator getTranslator(HttpServletRequest request) {
 		String username = request.getParameter("username");
+		
 		return translatorService.get(username);
 	}
 	

@@ -8,4 +8,8 @@ export class UnAuthenticatedUser extends User {
     this.password = "";
   }
 
+  public toXWWWFormUrlEncoded() {
+    return `username=${this.name}&password=${this.password}`;
+  }
+
 }
