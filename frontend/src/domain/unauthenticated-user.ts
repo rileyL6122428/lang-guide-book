@@ -2,7 +2,7 @@ import { User } from './user'
 
 export class UnAuthenticatedUser extends User {
 
-  password: String;
+  password: string;
 
   constuctor() {
     this.password = "";

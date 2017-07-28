@@ -10,13 +10,15 @@ import { routes } from './routes';
 
 import { Http } from '@angular/http';
 
-import { HttpModule } from '@angular/http'
+import { HttpModule } from '@angular/http';
 
-import { LoginComponent } from './components/login-page/login-page'
-import { HomePageComponent } from './components/home-page/home-page'
-import { LGBAppComponent } from './lgb-app-component'
+import { LoginComponent } from './components/login-page/login-page';
+import { HomePageComponent } from './components/home-page/home-page';
+import { DashboardPageComponent } from './components/dashboard-page/dashboard-page';
+import { LGBAppComponent } from './lgb-app-component';
 
-import { LoginService } from './services/login.service'
+import { LoginService } from './services/login.service';
+import { CurrentUserStore } from './container/current-user-store';
 
 @NgModule({
   imports: [
@@ -28,10 +30,12 @@ import { LoginService } from './services/login.service'
   declarations: [
     HomePageComponent,
     LGBAppComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardPageComponent
   ],
   bootstrap:    [ LGBAppComponent ],
   providers: [
+    CurrentUserStore,
     LoginService,
     { provide: LocationStrategy, useClass: HashLocationStrategy}
   ]

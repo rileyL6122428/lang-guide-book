@@ -29,7 +29,7 @@ public class SessionController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-	@PostMapping(value = "/session")
+	@PostMapping(value = "/session", produces = "application/json")
 	public Object createSession(HttpServletRequest request, HttpServletResponse response) {
 		Translator translator = getTranslator(request);
 		String password = request.getParameter("password");
@@ -37,7 +37,8 @@ public class SessionController {
 		if(authenticated(translator, password)) {
 			setSessionToken(translator, response);
 			response.setStatus(Response.SC_CREATED);
-			return "SESSION CREATED";
+			
+			return translator;
 		} else {
 			response.setStatus(Response.SC_FORBIDDEN);
 			return "SESSION NOT CREATED";

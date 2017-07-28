@@ -3,6 +3,8 @@ import { UnAuthenticatedUser } from '../../domain/unauthenticated-user';
 import { LoginService } from '../../services/login.service';
 import { Inject } from '@angular/core'
 
+import { Router } from '@angular/router';
+
 @Component({
   template: `
   <section id="login-page">
@@ -19,11 +21,21 @@ export class LoginComponent {
 
   private user:UnAuthenticatedUser = new UnAuthenticatedUser();
 
-  constructor(@Inject(LoginService) private loginService:LoginService) { }
+  constructor(
+    @Inject(LoginService) private loginService:LoginService,
+    @Inject(Router) private router: Router
+  ) { }
 
-  login() {
-    debugger
-    this.loginService.getSession(this.user);
+  login(): void {
+    this.loginService.postSession(
+      this.user,
+      this.loginResponseReceived.bind(this)
+    );
+  }
+
+  loginResponseReceived(backendLoginSuccessful: boolean): void {
+    if(backendLoginSuccessful)
+      this.router.navigateByUrl("dashboard");
   }
 
 }
