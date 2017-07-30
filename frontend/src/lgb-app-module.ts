@@ -16,7 +16,7 @@ import { HomePageComponent } from './components/home-page/home-page';
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page';
 import { LGBAppComponent } from './lgb-app-component';
 
-import { LoginService } from './services/login.service';
+import { AuthenticationService } from './services/authentication.service';
 import { CurrentUserStore } from './container/current-user-store';
 
 import { routes } from './routing/routes';
@@ -49,7 +49,7 @@ import { TranslatorHeader } from './components/authenticated-user/translator-hea
   providers: [
     AuthenticationHook,
     CurrentUserStore,
-    LoginService,
+    AuthenticationService,
     { provide: LocationStrategy, useClass: HashLocationStrategy}
   ]
 })

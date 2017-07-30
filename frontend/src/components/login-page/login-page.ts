@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UnAuthenticatedUser } from '../../domain/unauthenticated-user';
-import { LoginService } from '../../services/login.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { Inject } from '@angular/core';
 
 import { Router } from '@angular/router';
@@ -22,12 +22,12 @@ export class LoginComponent {
   private user:UnAuthenticatedUser = new UnAuthenticatedUser();
 
   constructor(
-    @Inject(LoginService) private loginService:LoginService,
+    @Inject(AuthenticationService) private authenticationService:AuthenticationService,
     @Inject(Router) private router: Router
   ) { }
 
   login(): void {
-    this.loginService.postSession(
+    this.authenticationService.postSession(
       this.user,
       this.loginResponseReceived.bind(this)
     );
