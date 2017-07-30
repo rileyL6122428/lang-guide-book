@@ -11,6 +11,6 @@ export class CurrentUserStore {
   }
 
   public userLoggedIn(): boolean {
-    return this.authenticatedUser !== null;
+    return !!this.authenticatedUser;
   }
 }

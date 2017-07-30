@@ -19,12 +19,12 @@ import { LGBAppComponent } from './lgb-app-component';
 import { LoginService } from './services/login.service';
 import { CurrentUserStore } from './container/current-user-store';
 
-import { routes } from './routes';
-import { AppRoutes } from './routing/routes';
+import { routes } from './routing/routes';
+import { AuthenticationHook } from './routing/auth-hook';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(AppRoutes.getConfig(), { useHash: true }),
+    RouterModule.forRoot(routes, { useHash: true }),
     BrowserModule,
     FormsModule,
     HttpModule
@@ -44,7 +44,7 @@ import { AppRoutes } from './routing/routes';
 
   bootstrap:    [ LGBAppComponent ],
   providers: [
-    AppRoutes,
+    AuthenticationHook,
     CurrentUserStore,
     LoginService,
     { provide: LocationStrategy, useClass: HashLocationStrategy}
