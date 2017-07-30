@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { RouterModule } from '@angular/router'
-import { routes } from './routes';
 
 import { Http } from '@angular/http';
 
@@ -20,9 +19,12 @@ import { LGBAppComponent } from './lgb-app-component';
 import { LoginService } from './services/login.service';
 import { CurrentUserStore } from './container/current-user-store';
 
+import { routes } from './routes';
+import { AppRoutes } from './routing/routes';
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(AppRoutes.getConfig(), { useHash: true }),
     BrowserModule,
     FormsModule,
     HttpModule
@@ -33,8 +35,16 @@ import { CurrentUserStore } from './container/current-user-store';
     LoginComponent,
     DashboardPageComponent
   ],
+
+  entryComponents: [
+    HomePageComponent,
+    LoginComponent,
+    DashboardPageComponent
+  ],
+
   bootstrap:    [ LGBAppComponent ],
   providers: [
+    AppRoutes,
     CurrentUserStore,
     LoginService,
     { provide: LocationStrategy, useClass: HashLocationStrategy}
