@@ -6,7 +6,15 @@ import 'rxjs/add/operator/filter';
 
 @Component({
   template: `
-    <div>THIS IS THE DASHBOARD PAGE</div>
+    <section id='dashboard-page'>
+      <translator-header></translator-header>
+
+      <section id='dashboard-widgets'>
+        <section id='translators-works'>
+          this is the translator's works section
+        </section>
+      </section>
+    </section>
   `,
 })
 export class DashboardPageComponent { }

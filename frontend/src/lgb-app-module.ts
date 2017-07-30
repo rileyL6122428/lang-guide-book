@@ -22,6 +22,8 @@ import { CurrentUserStore } from './container/current-user-store';
 import { routes } from './routing/routes';
 import { AuthenticationHook } from './routing/auth-hook';
 
+import { TranslatorHeader } from './components/authenticated-user/translator-header';
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { useHash: true }),
@@ -33,7 +35,8 @@ import { AuthenticationHook } from './routing/auth-hook';
     HomePageComponent,
     LGBAppComponent,
     LoginComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    TranslatorHeader
   ],
 
   entryComponents: [
