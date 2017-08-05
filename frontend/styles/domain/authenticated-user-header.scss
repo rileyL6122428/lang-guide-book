@@ -1,11 +1,30 @@
+@import "./transitioning-submit-button";
+
 @mixin authenticated-user-header() {
 
   section#authenticated-user-header {
     display: flex;
     justify-content: space-between;
 
+    padding-top: 15px;
+
     h3#site-header, ul#header-links {
       display: flex;
     }
+
+    ul#header-links {
+      margin-right: 25px;
+
+      li {
+        margin-right: 15px;
+      }
+
+      button#log-out {
+        @include transitioning-submit-button;
+      }
+    }
+
+
+
   }
 }

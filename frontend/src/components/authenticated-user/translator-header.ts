@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 
       <ul id='header-links'>
         <li>USER NAME</li>
-        <li><button (click)="logOut()">Log out</button></li>
+        <li><button id="log-out" (click)="logOut()">Log out</button></li>
       </ul>
     </section>
   `
