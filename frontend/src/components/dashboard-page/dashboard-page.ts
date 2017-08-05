@@ -11,7 +11,18 @@ import 'rxjs/add/operator/filter';
 
       <section id='dashboard-widgets'>
         <section id='translators-works'>
-          this is the translator's works section
+
+          <div id="list-interation-widget">
+            <button id="new-translation">+</button>
+            <input id="translations-filter" type="text" placeholder="filter" />
+          </div>
+
+          <ul id="works">
+            <li>EXAMPLE TITLE 1</li>
+            <li>EXAMPLE TITLE 2</li>
+            <li>EXAMPLE TITLE 3</li>
+          </ul>
+
         </section>
       </section>
     </section>
