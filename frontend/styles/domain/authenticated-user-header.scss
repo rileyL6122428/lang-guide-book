@@ -12,11 +12,22 @@
       display: flex;
     }
 
+    h3#site-header {
+      padding-top: 6px;
+      margin-left: 55px;
+      font-size: 18px;
+    }
+
     ul#header-links {
       margin-right: 25px;
 
       li {
-        margin-right: 15px;
+        margin-right: 35px;
+        font-size: 18px;
+      }
+
+      li:first-child {
+        padding-top: 6px;
       }
 
       button#log-out {
