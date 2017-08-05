@@ -1,0 +1,10 @@
+@import '../domain/background.scss';
+@import '../domain/authenticated-user-header';
+
+section#dashboard-page {
+
+  @include lgb-background;
+
+  @include authenticated-user-header;
+
+}

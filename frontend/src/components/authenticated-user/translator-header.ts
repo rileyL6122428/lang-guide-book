@@ -8,10 +8,10 @@ import { Router } from '@angular/router';
   template: `
     <section id='authenticated-user-header'>
 
-      <div id='site-header'>
-        <div>IMAGE PLACE HOLDER</div>
-        <h3>LGB</h3>
-      </div>
+      <h3 id='site-header'>
+        <div>(IMAGE PLACE HOLDER)</div>
+        <p>LGB</p>
+      </h3>
 
       <ul id='header-links'>
         <li>USER NAME</li>

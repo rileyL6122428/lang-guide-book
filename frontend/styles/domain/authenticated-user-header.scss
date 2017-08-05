@@ -1,0 +1,11 @@
+@mixin authenticated-user-header() {
+
+  section#authenticated-user-header {
+    display: flex;
+    justify-content: space-between;
+
+    h3#site-header, ul#header-links {
+      display: flex;
+    }
+  }
+}
