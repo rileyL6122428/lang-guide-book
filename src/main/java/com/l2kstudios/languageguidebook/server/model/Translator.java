@@ -1,7 +1,12 @@
 package com.l2kstudios.languageguidebook.server.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -13,6 +18,9 @@ public class Translator {
 	private String name;
 	private String encryptedPassword;
 	private String sessionToken;
+	
+	@OneToMany(mappedBy="owner", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+	private List<Translation> works;
 	
 	
 	public String getName() {
@@ -32,6 +40,12 @@ public class Translator {
 	}
 	public void setSessionToken(String sessionToken) {
 		this.sessionToken = sessionToken;
+	}
+	public List<Translation> getWorks() {
+		return works;
+	}
+	public void setWorks(List<Translation> works) {
+		this.works = works;
 	}
 	
 }

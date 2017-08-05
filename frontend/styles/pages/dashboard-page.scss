@@ -11,7 +11,7 @@ section#dashboard-page {
 
   section#translators-works {
 
-    margin-top: 25px;
+    margin-top: 42px;
 
     h3, div#list-interaction-widget, ul#works {
       display: flex;
@@ -29,7 +29,6 @@ section#dashboard-page {
       margin-top: 24px;
 
       button#new-translation {
-        background-color: $transparent;
         position: relative;
         width: 28px;
         height: 28px;
@@ -38,6 +37,7 @@ section#dashboard-page {
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
 
+        background-color: $transparent;
         transition: background-color 1s, color 1s;
 
         color: $pascal-white;
