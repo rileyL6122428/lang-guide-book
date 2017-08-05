@@ -11,9 +11,13 @@ import 'rxjs/add/operator/filter';
 
       <section id='dashboard-widgets'>
         <section id='translators-works'>
+          <h3>Your Works</h3>
 
-          <div id="list-interation-widget">
-            <button id="new-translation">+</button>
+          <div id="list-interaction-widget">
+            <button id="new-translation">
+              <div id="plus-icon">+</div>
+            </button>
+
             <input id="translations-filter" type="text" placeholder="filter" />
           </div>
 
