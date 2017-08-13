@@ -19,6 +19,9 @@ import { LGBAppComponent } from './lgb-app-component';
 import { AuthenticationService } from './services/authentication.service';
 import { CurrentUserStore } from './container/current-user-store';
 
+import { TranslationService } from './services/translation.service';
+import { TranslationStore } from './container/translation-store';
+
 import { routes } from './routing/routes';
 import { AuthenticationHook } from './routing/auth-hook';
 
@@ -50,7 +53,9 @@ import { TranslatorHeader } from './components/authenticated-user/translator-hea
     AuthenticationHook,
     CurrentUserStore,
     AuthenticationService,
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    TranslationStore,
+    TranslationService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ]
 })
 export class LGBAppModule { }
