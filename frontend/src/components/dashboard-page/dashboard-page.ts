@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { NavigationStart } from '@angular/router';
-import { Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
 import 'rxjs/add/operator/filter';
+
+import { TranslationService } from '../../services/translation.service';
 
 @Component({
   template: `
@@ -32,4 +32,18 @@ import 'rxjs/add/operator/filter';
     </section>
   `,
 })
-export class DashboardPageComponent { }
+export class DashboardPageComponent implements OnInit {
+
+  constructor(
+    @Inject(TranslationService) private translationService: TranslationService
+  ) { }
+
+  ngOnInit() {
+    debugger
+    this.translationService.getCurrentUserTranslations((response: any) => {
+      debugger
+      console.log(response);
+    })
+  }
+
+}

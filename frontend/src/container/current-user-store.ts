@@ -18,6 +18,10 @@ export class CurrentUserStore {
     return !!this.authenticatedUser;
   }
 
+  public getCurrentUserName(): string {
+    return this.authenticatedUser.name;
+  }
+
   public removeUser(): void {
     this.authenticatedUser = null;
   }

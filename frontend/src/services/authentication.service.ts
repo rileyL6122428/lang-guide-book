@@ -16,11 +16,11 @@ import { CurrentUserStore } from '../container/current-user-store';
 @Injectable()
 export class AuthenticationService {
 
-  private static readonly SESSION_REQUEST_OPTIONS: RequestOptions = new RequestOptions({
+  private static SESSION_REQUEST_OPTIONS: RequestOptions = new RequestOptions({
     headers: new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' })
   });
 
-  private static readonly SESSION_REQUEST_PATH: string = '/session';
+  private static SESSION_REQUEST_PATH: string = '/session';
 
   constructor(
     @Inject(Http) private http: Http,
