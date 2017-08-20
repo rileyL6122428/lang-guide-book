@@ -8,6 +8,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class TranslationService {
 
+  private static readonly TRANSLATION_REQUEST_PATH: string = "/translations";
+
   constructor(
     @Inject(TranslationStore) private translationStore: TranslationStore,
     @Inject(CurrentUserStore) private currentUserStore: CurrentUserStore,
@@ -17,23 +19,19 @@ export class TranslationService {
   getCurrentUserTranslations(responseReceivedCallback: Function):void {
 
     this.http.get(
-      "/translations", { params: {
-        translatorName: this.currentUserStore.getCurrentUserName(),
-        username: this.currentUserStore.getCurrentUserName()
-      }
-    })
+      TranslationService.TRANSLATION_REQUEST_PATH,
+      { params: this.getCurrentUserTranslationsSearchParams() }
+    )
       .subscribe((response) => {
         responseReceivedCallback(response);
       });
   }
 
-  private getCurrentUserTranslationsSearchParams(): URLSearchParams {
-    let searchParams: URLSearchParams = new URLSearchParams();
-
-    searchParams.set("translatorName", this.currentUserStore.getCurrentUserName());
-    searchParams.set("username", this.currentUserStore.getCurrentUserName());
-    debugger
-    return searchParams;
+  private getCurrentUserTranslationsSearchParams(): Object {
+    return {
+      translatorName: this.currentUserStore.getCurrentUserName(),
+      username: this.currentUserStore.getCurrentUserName()
+    };
   }
 
 }

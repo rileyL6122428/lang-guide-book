@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.WebUtils;
 
 import com.l2kstudios.languageguidebook.server.model.Translator;
 
@@ -29,7 +30,7 @@ public class AuthenticationService {
 	}
 	
 	public boolean sessionTokenIsAuthentic(Translator translator, HttpServletRequest request) {
-		Cookie sessionCookie = request.getCookies()[0];
+		Cookie sessionCookie = WebUtils.getCookie(request, SESSION_COOKIE_NAME);
 		UUID clientSessionID = UUID.fromString(sessionCookie.getValue());
 		UUID backendSessionID = UUID.fromString(translator.getSessionToken());
 		return clientSessionID.equals(backendSessionID);
