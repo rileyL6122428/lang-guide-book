@@ -4,6 +4,8 @@ import 'rxjs/add/operator/filter';
 
 import { TranslationService } from '../../services/translation.service';
 
+import { Translation } from '../../domain/translation';
+
 @Component({
   template: `
     <section id='dashboard-page'>
@@ -22,9 +24,9 @@ import { TranslationService } from '../../services/translation.service';
           </div>
 
           <ul id="works">
-            <li>EXAMPLE TITLE 1</li>
-            <li>EXAMPLE TITLE 2</li>
-            <li>EXAMPLE TITLE 3</li>
+            <li *ngFor="let work of works;">
+              {{work.name}}
+            </li>
           </ul>
 
         </section>
@@ -34,14 +36,18 @@ import { TranslationService } from '../../services/translation.service';
 })
 export class DashboardPageComponent implements OnInit {
 
+  private works: Translation[];
+
   constructor(
     @Inject(TranslationService) private translationService: TranslationService
   ) { }
 
   ngOnInit() {
-    debugger
     this.translationService.getCurrentUserTranslations((response: any) => {
       debugger
+      this.works = response.json().map(
+        (translationPOJO: Object) => Translation.fromPOJO(translationPOJO)
+      );
       console.log(response);
     })
   }
