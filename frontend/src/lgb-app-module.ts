@@ -12,8 +12,12 @@ import { Http } from '@angular/http';
 import { HttpModule } from '@angular/http';
 
 import { LoginComponent } from './components/login-page/login-page';
+
 import { HomePageComponent } from './components/home-page/home-page';
+
 import { DashboardPageComponent } from './components/dashboard-page/dashboard-page';
+import { TranslationsNotFoundMessage } from './components/dashboard-page/translations-not-found-message';
+
 import { LGBAppComponent } from './lgb-app-component';
 
 import { AuthenticationService } from './services/authentication.service';
@@ -39,6 +43,7 @@ import { TranslatorHeader } from './components/authenticated-user/translator-hea
     LGBAppComponent,
     LoginComponent,
     DashboardPageComponent,
+    TranslationsNotFoundMessage,
     TranslatorHeader
   ],
 

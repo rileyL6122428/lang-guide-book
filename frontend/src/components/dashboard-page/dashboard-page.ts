@@ -9,7 +9,9 @@ import { Translation } from '../../domain/translation';
 @Component({
   template: `
     <section id='dashboard-page'>
-      <translator-header></translator-header>
+      
+      <translator-header>
+      </translator-header>
 
       <section id='dashboard-widgets'>
         <section id='translators-works'>
@@ -23,7 +25,8 @@ import { Translation } from '../../domain/translation';
             <input id="translations-filter" type="text" placeholder="filter" />
           </div>
 
-          <p *ngIf="!canShowUserWorks()">No Works Available</p>
+          <translations-not-found-message *ngIf="!canShowUserWorks()">
+          </translations-not-found-message>
 
           <ul id="works" *ngIf="canShowUserWorks()">
             <li *ngFor="let work of works;">
