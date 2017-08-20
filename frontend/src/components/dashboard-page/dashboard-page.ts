@@ -23,7 +23,9 @@ import { Translation } from '../../domain/translation';
             <input id="translations-filter" type="text" placeholder="filter" />
           </div>
 
-          <ul id="works">
+          <p *ngIf="!canShowUserWorks()">No Works Available</p>
+
+          <ul id="works" *ngIf="canShowUserWorks()">
             <li *ngFor="let work of works;">
               {{work.name}}
             </li>
@@ -42,14 +44,16 @@ export class DashboardPageComponent implements OnInit {
     @Inject(TranslationService) private translationService: TranslationService
   ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
     this.translationService.getCurrentUserTranslations((response: any) => {
-      debugger
       this.works = response.json().map(
         (translationPOJO: Object) => Translation.fromPOJO(translationPOJO)
       );
-      console.log(response);
-    })
+    });
+  }
+
+  public canShowUserWorks(): boolean {
+    return this.works && this.works.length !== 0;
   }
 
 }
