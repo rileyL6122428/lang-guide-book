@@ -44,6 +44,10 @@ export class AuthenticationService {
     this.currentUserStore.storeUser(authenticatedUser);
   }
 
+  public getUsername(): string {
+      return this.currentUserStore.getCurrentUserName();
+  }
+
   public deleteSession(): void {
     this.http.delete(AuthenticationService.SESSION_REQUEST_PATH);
     this.currentUserStore.removeUser();
