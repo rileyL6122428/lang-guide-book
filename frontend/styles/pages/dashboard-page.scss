@@ -80,4 +80,22 @@ section#dashboard-page {
       margin-top: 18px;
     }
   }
+
+  article#translations-not-found-message {
+    margin:auto;
+    width: 680px;
+
+    p, ul {
+      margin-top: 15px;
+    }
+
+    ul {
+      padding-left: 45px;
+
+      li {
+        display: list-item;
+      }
+    }
+
+  }
 }
