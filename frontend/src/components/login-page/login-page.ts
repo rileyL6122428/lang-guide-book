@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { UnAuthenticatedUser } from '../../domain/unauthenticated-user';
 import { AuthenticationService } from '../../services/authentication.service';
-import { Inject } from '@angular/core';
 
 import { Router } from '@angular/router';
 

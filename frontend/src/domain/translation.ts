@@ -15,7 +15,7 @@ export class Translation {
   private _ownerName: string;
 
   get id(): number {
-    return this.id;
+    return this._id;
   }
 
   get name(): string {

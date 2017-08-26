@@ -9,7 +9,7 @@ import { Translation } from '../../domain/translation';
 @Component({
   template: `
     <section id='dashboard-page'>
-      
+
       <translator-header>
       </translator-header>
 
@@ -30,7 +30,9 @@ import { Translation } from '../../domain/translation';
 
           <ul id="works" *ngIf="canShowUserWorks()">
             <li *ngFor="let work of works;">
-              {{work.name}}
+              <a [routerLink]="['/translation', work.id]">
+                {{work.name}}
+              </a>
             </li>
           </ul>
 

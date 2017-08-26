@@ -26,6 +26,8 @@ import { CurrentUserStore } from './container/current-user-store';
 import { TranslationService } from './services/translation.service';
 import { TranslationStore } from './container/translation-store';
 
+import { TranslationOverviewComponent } from './components/translation-overview-page/translation-overview-page';
+
 import { routes } from './routing/routes';
 import { AuthenticationHook } from './routing/auth-hook';
 
@@ -44,13 +46,15 @@ import { TranslatorHeader } from './components/authenticated-user/translator-hea
     LoginComponent,
     DashboardPageComponent,
     TranslationsNotFoundMessage,
-    TranslatorHeader
+    TranslatorHeader,
+    TranslationOverviewComponent
   ],
 
   entryComponents: [
     HomePageComponent,
     LoginComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    TranslationOverviewComponent
   ],
 
   bootstrap:    [ LGBAppComponent ],
