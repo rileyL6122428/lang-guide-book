@@ -25,24 +25,23 @@ export class TranslationService {
   getCurrentUserTranslations(responseReceivedCallback: Function): Translation[] {
     this.http.get(
       TranslationService.TRANSLATION_REQUEST_PATH,
-      { params: this.getCurrentUserTranslationsSearchParams() }
+      this.currentUserTranslationRequestData()
     )
       .subscribe((response) => {
-
         this.translationStore.storeTranslations(this.currentUserStore.getUsername(), response.json());
-        let currentUserTranslations = this.translationStore.getTranslations(
-          this.currentUserStore.getUsername()
-        );
+        let currentUserTranslations: Translation[] = this.translationStore.getTranslations(this.currentUserStore.getUsername());
         responseReceivedCallback(currentUserTranslations);
       });
 
     return this.translationStore.getTranslations(this.currentUserStore.getUsername());
   }
 
-  private getCurrentUserTranslationsSearchParams(): Object {
+  private currentUserTranslationRequestData(): Object {
     return {
-      translatorName: this.currentUserStore.getUsername(),
-      username: this.currentUserStore.getUsername()
+      params: {
+        translatorName: this.currentUserStore.getUsername(),
+        username: this.currentUserStore.getUsername()
+      }
     };
   }
 
