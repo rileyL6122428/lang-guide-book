@@ -38,6 +38,8 @@ import { Translation } from '../../domain/translation';
 
         </section>
       </section>
+
+      <loading-circle></loading-circle>
     </section>
   `,
 })

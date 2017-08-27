@@ -33,6 +33,8 @@ import { AuthenticationHook } from './routing/auth-hook';
 
 import { TranslatorHeader } from './components/authenticated-user/translator-header';
 
+import { LoadingCircle } from './components/loading-images/loading-circle';
+
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { useHash: true }),
@@ -47,7 +49,8 @@ import { TranslatorHeader } from './components/authenticated-user/translator-hea
     DashboardPageComponent,
     TranslationsNotFoundMessage,
     TranslatorHeader,
-    TranslationOverviewComponent
+    TranslationOverviewComponent,
+    LoadingCircle
   ],
 
   entryComponents: [
