@@ -50,11 +50,9 @@ export class DashboardPageComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.translationService.getCurrentUserTranslations((response: any) => {
-      this.works = response.json().map(
-        (translationPOJO: Object) => Translation.fromPOJO(translationPOJO)
-      );
-    });
+    this.works = this.translationService.getCurrentUserTranslations(
+      (translations: Translation[]) => this.works = translations
+    );
   }
 
   public canShowUserWorks(): boolean {

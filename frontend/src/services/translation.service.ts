@@ -3,6 +3,8 @@ import { Injectable, Inject } from '@angular/core';
 import { CurrentUserStore } from '../container/current-user-store';
 import { TranslationStore } from '../container/translation-store';
 
+import { Translation } from '../domain/Translation';
+
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 @Injectable()
@@ -16,21 +18,31 @@ export class TranslationService {
     @Inject(Http) private http: Http
   ) { }
 
-  getCurrentUserTranslations(responseReceivedCallback: Function):void {
+  getTranslation(id: number, responseReceivedCallback: Function): Translation {
+    return this.translationStore.getTranslation(id);
+  }
 
+  getCurrentUserTranslations(responseReceivedCallback: Function): Translation[] {
     this.http.get(
       TranslationService.TRANSLATION_REQUEST_PATH,
       { params: this.getCurrentUserTranslationsSearchParams() }
     )
       .subscribe((response) => {
-        responseReceivedCallback(response);
+
+        this.translationStore.storeTranslations(this.currentUserStore.getUsername(), response.json());
+        let currentUserTranslations = this.translationStore.getTranslations(
+          this.currentUserStore.getUsername()
+        );
+        responseReceivedCallback(currentUserTranslations);
       });
+
+    return this.translationStore.getTranslations(this.currentUserStore.getUsername());
   }
 
   private getCurrentUserTranslationsSearchParams(): Object {
     return {
-      translatorName: this.currentUserStore.getCurrentUserName(),
-      username: this.currentUserStore.getCurrentUserName()
+      translatorName: this.currentUserStore.getUsername(),
+      username: this.currentUserStore.getUsername()
     };
   }
 

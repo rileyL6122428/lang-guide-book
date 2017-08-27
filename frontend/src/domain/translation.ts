@@ -1,11 +1,11 @@
 export class Translation {
 
-  static fromPOJO(pojo: Object) {
+  static fromPOJO(ownerName: string, pojo: Object) {
     let translation: Translation = new Translation();
 
     translation._id = pojo['id'];
     translation._name = pojo["name"];
-    translation._ownerName = pojo["ownerName"];
+    translation._ownerName = ownerName;
 
     return translation;
   }

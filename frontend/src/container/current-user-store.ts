@@ -18,7 +18,7 @@ export class CurrentUserStore {
     return !!this.authenticatedUser;
   }
 
-  public getCurrentUserName(): string {
+  public getUsername(): string {
     return this.authenticatedUser.name;
   }
 

@@ -45,7 +45,7 @@ export class AuthenticationService {
   }
 
   public getUsername(): string {
-      return this.currentUserStore.getCurrentUserName();
+      return this.currentUserStore.getUsername();
   }
 
   public deleteSession(): void {

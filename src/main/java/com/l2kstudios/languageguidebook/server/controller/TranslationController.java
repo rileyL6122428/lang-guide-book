@@ -18,7 +18,8 @@ public class TranslationController {
 	
 	@GetMapping(value="/translations")
 	public List<Translation> getTranslations(@RequestParam String translatorName) {
-		return translationService.getTranslations(translatorName);
+		List<Translation> translations = translationService.getTranslations(translatorName);
+		return translations;
 	}
 	
 	
