@@ -112,6 +112,10 @@ section#dashboard-page {
         display: list-item;
       }
     }
+  }
 
+  canvas#loading-circle {
+    margin: auto;
+    width: 75px;
   }
 }
