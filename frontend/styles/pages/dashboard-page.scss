@@ -1,5 +1,7 @@
 @import '../domain/background';
 @import '../domain/authenticated-user-header';
+@import "../domain/translation-list-item";
+@import "../domain/list-interaction-widget";
 @import "../constants/colors";
 @import "../inj-styles/input-placeholder";
 
@@ -27,51 +29,7 @@ section#dashboard-page {
 
     div#list-interaction-widget {
       margin-top: 24px;
-
-      button#new-translation {
-        position: relative;
-        width: 28px;
-        height: 28px;
-
-        border: 1px solid $pascal-white;
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
-
-        background-color: $transparent;
-        transition: background-color 1s, color 1s;
-
-        color: $pascal-white;
-
-        &:hover {
-          cursor: pointer;
-
-          background-color: $pascal-white-thin;
-          color: $pascal-light-blue;
-        }
-
-        div#plus-icon {
-          position: absolute;
-          top: -6.5px;
-          left: 4.7px;
-
-          color: inherit;
-          font-size: 28px;
-        }
-      }
-
-      input#translations-filter {
-        background-color: $transparent;
-        color: $pascal-white;
-
-        padding-left: 8px;
-
-        border: 1px solid $pascal-white;
-        border-left: 0px;
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
-
-        @include apply-to-placeholder { color: $pascal-white-thin; };
-      }
+      @include list-interaction-widget();
     }
 
     ul#works {
@@ -81,17 +39,7 @@ section#dashboard-page {
 
       li {
         margin-top: 3px;
-
-        a {
-          color: white;
-          text-decoration: none;
-          font-size: 16px;
-          margin-top: 3px;
-
-          &:hover {
-            border-bottom: 2px solid white;
-          }
-        }
+        @include translation-list-item();
       }
 
     }
