@@ -22,18 +22,19 @@ export class TranslationService {
     return this.translationStore.getTranslation(id);
   }
 
-  getCurrentUserTranslations(responseReceivedCallback: Function): Translation[] {
+  getCurrentUserTranslations(): Translation[] {
+    return this.translationStore.getTranslations(this.currentUserStore.getUsername());
+  }
+
+  fetchCurrentUserTranslations(responseReceivedCallback: Function): void {
     this.http.get(
       TranslationService.TRANSLATION_REQUEST_PATH,
       this.currentUserTranslationRequestData()
     )
       .subscribe((response) => {
         this.translationStore.storeTranslations(this.currentUserStore.getUsername(), response.json());
-        let currentUserTranslations: Translation[] = this.translationStore.getTranslations(this.currentUserStore.getUsername());
-        responseReceivedCallback(currentUserTranslations);
+        responseReceivedCallback(this.getCurrentUserTranslations());
       });
-
-    return this.translationStore.getTranslations(this.currentUserStore.getUsername());
   }
 
   private currentUserTranslationRequestData(): Object {

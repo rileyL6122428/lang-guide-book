@@ -25,10 +25,10 @@ import { Translation } from '../../domain/translation';
             <input id="translations-filter" type="text" placeholder="filter" />
           </div>
 
-          <translations-not-found-message *ngIf="minimumLoadTimeExceeded && !canShowUserWorks()">
+          <translations-not-found-message *ngIf="canShowMessage() && canShowNoWorksMessage()">
           </translations-not-found-message>
 
-          <ul id="works" *ngIf="minimumLoadTimeExceeded && canShowUserWorks()">
+          <ul id="works" *ngIf="canShowMessage() && canShowWorks()">
             <li *ngFor="let work of works;">
               <a [routerLink]="['/translation', work.id]">
                 {{work.name}}
@@ -39,7 +39,7 @@ import { Translation } from '../../domain/translation';
         </section>
       </section>
 
-      <loading-circle *ngIf="!minimumLoadTimeExceeded"></loading-circle>
+      <loading-circle *ngIf="!canShowMessage()"></loading-circle>
     </section>
   `,
 })
@@ -50,31 +50,53 @@ export class DashboardPageComponent implements OnInit {
   private works: Translation[];
   private minimumLoadTimeExceeded: boolean;
   private fetchTranslationsFinished: boolean;
+  private elapsedLoadTime: number;
+  private serviceCallFinished: boolean;
+  private translationsEmptyBeforeServiceCall: boolean;
 
   constructor(
     @Inject(TranslationService) private translationService: TranslationService
   ) { }
 
   public ngOnInit() {
-    this.startCentralLoadCircle();
+    this.works = this.translationService.getCurrentUserTranslations();
+    debugger
+    this.translationsEmptyBeforeServiceCall = this.works.length === 0;
+    if(this.translationsEmptyBeforeServiceCall) {
+      debugger
+      this.startCentralLoadCircle();
+    }
 
-    this.works = this.translationService.getCurrentUserTranslations(
-      (translations: Translation[]) => this.works = translations
-    );
+    this.serviceCallFinished = false;
+    this.translationService.fetchCurrentUserTranslations((translations: Translation[]) => {
+        this.works = translations;
+        debugger
+        this.serviceCallFinished = true;
+    });
   }
 
-  public canShowUserWorks(): boolean {
-    return this.works && this.works.length !== 0;
+  public canShowMessage(): boolean {
+    return  (this.serviceCallFinished &&
+            this.minimumLoadTimeExceeded) || !this.translationsEmptyBeforeServiceCall;
+  }
+
+  public canShowNoWorksMessage(): boolean {
+    return this.works.length === 0;
+  }
+
+  public canShowWorks(): boolean {
+    return this.works.length > 0;
   }
 
   private startCentralLoadCircle(): void {
     this.minimumLoadTimeExceeded = false;
-    let elapsedLoadTime = 0;
-
+    this.elapsedLoadTime = 0;
+    debugger
     let incrementLoadToken = setInterval(() => {
-      elapsedLoadTime += 0.5;
-
-      if(elapsedLoadTime >= DashboardPageComponent.MINIMUM_LOAD_TIME) {
+      this.elapsedLoadTime += 0.5;
+      debugger
+      if(this.elapsedLoadTime >= DashboardPageComponent.MINIMUM_LOAD_TIME) {
+        debugger
         this.minimumLoadTimeExceeded = true;
         clearInterval(incrementLoadToken);
       }
