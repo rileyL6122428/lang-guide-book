@@ -9,9 +9,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 export class LoadingCircle implements OnInit, OnDestroy {
 
   private theta: number;
-  private removeDrawToken: any;
+  private drawIntervalToken: any;
   private canvas: HTMLCanvasElement;
-  private context: CanvasRenderingContext2D;
+  private drawingContext: CanvasRenderingContext2D;
 
   private backgroundAlpha: number;
   private backgroundColor: string;
@@ -19,16 +19,16 @@ export class LoadingCircle implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.theta = 0;
     this.canvas = <HTMLCanvasElement> document.getElementById("loading-circle");
-    this.context = this.canvas.getContext("2d");
+    this.drawingContext = this.canvas.getContext("2d");
 
     this.backgroundColor = "white";
     this.backgroundAlpha = 1;
 
-    this.removeDrawToken = setInterval(() => this.draw(), 20);
+    this.drawIntervalToken = setInterval(() => this.draw(), 20);
   }
 
   ngOnDestroy(): void {
-    clearInterval(this.removeDrawToken);
+    clearInterval(this.drawIntervalToken);
   }
 
   private draw(): void {
@@ -36,16 +36,16 @@ export class LoadingCircle implements OnInit, OnDestroy {
 
     this.drawBackground();
 
-    this.context.translate(190,200)
-    this.context.rotate(this.theta)
-    this.context.strokeStyle = "#f44e42";
-    this.context.lineWidth = 30;
+    this.drawingContext.translate(190,200)
+    this.drawingContext.rotate(this.theta)
+    this.drawingContext.strokeStyle = "#f44e42";
+    this.drawingContext.lineWidth = 30;
 
     var incrementTotal = 60
     for(var idx = 0; idx < incrementTotal; idx++) {
-      this.context.globalAlpha = (1/incrementTotal) * idx;
-      this.context.beginPath();
-      this.context.arc(
+      this.drawingContext.globalAlpha = (1/incrementTotal) * idx;
+      this.drawingContext.beginPath();
+      this.drawingContext.arc(
         0,
         0,
         100,
@@ -53,41 +53,41 @@ export class LoadingCircle implements OnInit, OnDestroy {
         (idx + 1)/(incrementTotal / 2) * Math.PI,
         false
       );
-      this.context.stroke();
+      this.drawingContext.stroke();
     }
 
-    this.context.globalAlpha = 1
-    this.context.rotate(-this.theta)
-    this.context.translate(-190,-200)
+    this.drawingContext.globalAlpha = 1
+    this.drawingContext.rotate(-this.theta)
+    this.drawingContext.translate(-190,-200)
   }
 
   private drawBackground(): void {
-    this.context.clearRect(0, 0, 400, 400)
+    this.drawingContext.clearRect(0, 0, 400, 400)
 
-    this.context.globalAlpha = this.backgroundAlpha;
-    this.context.fillStyle = this.backgroundColor;
-    this.drawRoundedSquare(this.context, 5,15,370);
+    this.drawingContext.globalAlpha = this.backgroundAlpha;
+    this.drawingContext.fillStyle = this.backgroundColor;
+    this.drawRoundedSquare(this.drawingContext, 5,15,370);
   }
 
-  private drawRoundedSquare(context: CanvasRenderingContext2D, x: number, y: number, side: number): void {
-    context.beginPath();
-    context.moveTo(x + side / 10, y + side / 10)
-    context.arc(x + side / 10, y + side / 10, side / 10,  Math.PI, 1.5 * Math.PI, false);
+  private drawRoundedSquare(drawingContext: CanvasRenderingContext2D, x: number, y: number, sideLength: number): void {
+    drawingContext.beginPath();
+    drawingContext.moveTo(x + sideLength / 10, y + sideLength / 10)
+    drawingContext.arc(x + sideLength / 10, y + sideLength / 10, sideLength / 10,  Math.PI, 1.5 * Math.PI, false);
 
-    context.lineTo(x + 9 * side / 10, y)
-    context.lineTo(x + 9 * side / 10, y + side / 10)
-    context.arc(x + 9 * side / 10, y + side / 10, side / 10, 1.5 * Math.PI, 2 * Math.PI, false);
+    drawingContext.lineTo(x + 9 * sideLength / 10, y)
+    drawingContext.lineTo(x + 9 * sideLength / 10, y + sideLength / 10)
+    drawingContext.arc(x + 9 * sideLength / 10, y + sideLength / 10, sideLength / 10, 1.5 * Math.PI, 2 * Math.PI, false);
 
-    context.lineTo(x + side , y + side * 9 / 10)
-    context.lineTo(x + 9 * side / 10, y + side * 9 / 10)
-    context.arc(x + 9 * side / 10, y + side * 9 / 10, side / 10, 2 * Math.PI, 2.5 * Math.PI, false);
+    drawingContext.lineTo(x + sideLength , y + sideLength * 9 / 10)
+    drawingContext.lineTo(x + 9 * sideLength / 10, y + sideLength * 9 / 10)
+    drawingContext.arc(x + 9 * sideLength / 10, y + sideLength * 9 / 10, sideLength / 10, 2 * Math.PI, 2.5 * Math.PI, false);
 
-    context.lineTo(x + side / 10, y + side);
-    context.lineTo(x + side / 10 , y + side * 9 / 10);
-    context.arc(x + side / 10, y + side * 9 / 10, side / 10, 2.5 * Math.PI, 3 * Math.PI, false);
+    drawingContext.lineTo(x + sideLength / 10, y + sideLength);
+    drawingContext.lineTo(x + sideLength / 10 , y + sideLength * 9 / 10);
+    drawingContext.arc(x + sideLength / 10, y + sideLength * 9 / 10, sideLength / 10, 2.5 * Math.PI, 3 * Math.PI, false);
 
-    context.lineTo(x, y + side / 10)
-    context.fill();
+    drawingContext.lineTo(x, y + sideLength / 10)
+    drawingContext.fill();
   }
 
   private loadingOverlapOffset(rotateIdx: number): number {
